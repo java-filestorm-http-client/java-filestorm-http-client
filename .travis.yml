@@ -1,0 +1,11 @@
+language: java
+jdk:
+  - oraclejdk8
+before_script:
+  - wget https://dist.filestorm.io/go-filestorm/v0.4.16/go-filestorm_v0.4.16_linux-amd64.tar.gz -O /tmp/go-filestorm_linux-amd64.tar.gz
+  - tar -xvf /tmp/go-filestorm_linux-amd64.tar.gz
+  - export PATH=$PATH:$PWD/go-filestorm/
+  - filestorm init
+  - filestorm daemon --enable-pubsub-experiment &
+script:
+  - mvn clean verify
