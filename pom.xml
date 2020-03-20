@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.ipfs</groupId>
+    <groupId>com.github.java-filestorm-http-client</groupId>
     <artifactId>java-filestorm-http-client</artifactId>
 	<version>v1.2.3</version>
 	<packaging>jar</packaging>
@@ -14,19 +14,6 @@
  		<system>GitHub Issues</system>
  	</issueManagement>
 
- 	<scm>
- 		<url>https://github.com/filestorm-fst/java-filestorm-http-client</url>
- 		<connection>scm:git:git://github.com/filestorm-fst/java-filestorm-http-client.git</connection>
- 		<developerConnection>scm:git:git@github.com:ipfs/java-filestorm-http-client.git</developerConnection>
- 	</scm>
-
- 	<licenses>
- 		<license>
- 			<name>MIT License</name>
- 			<url>https://github.com/ipfs/java-ipfs-http-client/blob/master/LICENSE</url>
- 			<distribution>repo</distribution>
- 		</license>
- 	</licenses>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
