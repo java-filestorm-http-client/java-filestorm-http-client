@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.io.File;
 
 public class AesFileTest {
-    Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","http://stormchain.icode.link","0xb5a369b10ce738b129d1515d95ed09308d72eba35890bb5b69e953b826275a40");
+    Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","http://xxxxxxx","xxxxxxx");
     Encrypt encrypt1 = new Encrypt();
 
     @Test

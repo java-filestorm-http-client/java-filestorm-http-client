@@ -12,7 +12,7 @@ public class AddTest {
     @Test
     public void test() throws InterruptedException, ExecutionException, IOException {
         for (int i = 0; i <11 ; i++) {
-            Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","http://stormchain.icode.link","0xb5a369b10ce738b129d1515d95ed09308d72eba35890bb5b69e953b826275a40");
+            Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","xxxxxxxx","xxxxxxx");
             NamedStreamable.FileWrapper savefile = new NamedStreamable.FileWrapper(new File("D:\\Downloads\\sstap.zip"));
             String result = fstorm.add(savefile,false);
             System.out.println(result);
@@ -21,7 +21,7 @@ public class AddTest {
     }
     @Test
     public void testRm() throws InterruptedException, ExecutionException, IOException {
-        Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","http://stormchain.icode.link","0xb5a369b10ce738b129d1515d95ed09308d72eba35890bb5b69e953b826275a40");
+        Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","xxxxxxx","xxxxxxx");
         Fstorm.Pin pin = fstorm.pin;
         MerkleNode merkleNode1 = new MerkleNode("QmNvmLU5BgUjXhG59ywziURdcXgGXqyYaChf5S7diVghuS");
         Multihash hash = merkleNode1.hash;
@@ -30,7 +30,7 @@ public class AddTest {
     }
     @Test
     public void testPinAdd() throws InterruptedException, ExecutionException, IOException {
-        Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","http://stormchain.icode.link","0xb5a369b10ce738b129d1515d95ed09308d72eba35890bb5b69e953b826275a40");
+        Fstorm fstorm = new Fstorm("/ip4/127.0.0.1/tcp/5001","http:xxxxxxx","xxxxxxx");
 
         Fstorm.Pin pin = fstorm.pin;
         MerkleNode merkleNode1 = new MerkleNode("QmQc3UdKHSDPmrQQyZXcnJecG7GC34QCVAYjaRqe5rsUBw");
