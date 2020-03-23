@@ -205,20 +205,25 @@ public class Fstorm implements Storm3j{
         boolean exists = file.exists();
         if (exists) {
             String s = FileUtils.encodeStringFile(file);
-            int length = credentials.getAddress().length();
-            BigInteger nonce1 = BigInteger.valueOf(Long.parseLong(s.substring(length)));
-            if (nonce1.compareTo(nonce) != -1) {
-                nonce = nonce1.add(BigInteger.ONE);
-                String content = credentials.getAddress() + nonce.toString();
-                FileWriter fileWritter = new FileWriter(file.getName(),false);
-                fileWritter.write(content);
-                fileWritter.close();
+            if (s != null){
+                int length = credentials.getAddress().length();
+                BigInteger nonce1 = BigInteger.valueOf(Long.parseLong(s.substring(length)));
+                if (nonce1.compareTo(nonce) != -1) {
+                    nonce = nonce1.add(BigInteger.ONE);
+                    String content = credentials.getAddress() + nonce.toString();
+                    FileWriter fileWritter = new FileWriter(file.getName(),false);
+                    fileWritter.write(content);
+                    fileWritter.close();
+                }else {
+                    String content = credentials.getAddress() + nonce.toString();
+                    FileWriter fileWritter = new FileWriter(file.getName(),false);
+                    fileWritter.write(content);
+                    fileWritter.close();
+                }
             }else {
-                String content = credentials.getAddress() + nonce.toString();
-                FileWriter fileWritter = new FileWriter(file.getName(),false);
-                fileWritter.write(content);
-                fileWritter.close();
+                throw new EOFException("文件读取异常!");
             }
+
         } else {
             String content = credentials.getAddress() + nonce.toString();
             file.createNewFile();
