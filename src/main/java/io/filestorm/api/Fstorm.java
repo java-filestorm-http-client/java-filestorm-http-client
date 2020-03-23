@@ -204,7 +204,7 @@ public class Fstorm implements Storm3j{
         java.io.File file = new java.io.File(configPath);
         boolean exists = file.exists();
         if (exists) {
-            String s = FileUtils.readFileByLines(file);
+            String s = FileUtils.encodeStringFile(file);
             int length = credentials.getAddress().length();
             BigInteger nonce1 = BigInteger.valueOf(Long.parseLong(s.substring(length)));
             if (nonce1.compareTo(nonce) != -1) {

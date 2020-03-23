@@ -4,54 +4,26 @@ import java.math.BigInteger;
 
 public class FileUtils {
     /**
-     * 以行为单位读取文件，常用于读面向行的格式化文件
+     *
+     * @param file 读取文件
+     * @return  返回十六进制字符串
+     * @throws IOException  文件读取异常
      */
-    public static String readFileByLines(File file) {
-        BufferedReader reader = null;
-        String tempString = null;
-        StringBuffer stringBuffer = new StringBuffer();
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            // 一次读入一行，直到读入null为文件结束
-            while ((reader.readLine()) != null) {
-                tempString = reader.readLine();
-                stringBuffer.append(tempString);
-            }
-            reader.close();
-            return stringBuffer.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e1) {
-                }
-            }
-        }
-        return tempString;
-    }
-
-    /**
-     * 读取文件转16进制
-     * @param file
-     * @return
-     * @throws Exception
-     */
-    public static String encodeHexFile(File file) throws Exception {
+    public static String encodeHexFile(File file) throws IOException {
         FileInputStream inputFile = new FileInputStream(file);
         byte[] buffer = new byte[(int) file.length()];
         inputFile.read(buffer);
         inputFile.close();
         return  new BigInteger(1, buffer).toString(16);
     }
+
     /**
-     * 读取文件
-     * @param file
-     * @return
-     * @throws Exception
+     *
+     * @param file  读取文件
+     * @return  返回字符串
+     * @throws IOException  文件读取异常
      */
-    public static String encodeStringFile(File file) throws Exception {
+    public static String encodeStringFile(File file) throws IOException {
         FileInputStream inputFile = new FileInputStream(file);
         byte[] buffer = new byte[(int) file.length()];
         inputFile.read(buffer);
@@ -60,9 +32,9 @@ public class FileUtils {
     }
 
     /**
-     * 十六进制转string
-     * @param s
-     * @return
+     * 十六进制字符串转字符串
+     * @param s    输入十六进制字符串
+     * @return  返回字符串
      */
     public static String hexStringToString(String s) {
         if (s == null || s.equals("")) {
@@ -87,9 +59,9 @@ public class FileUtils {
     }
 
     /**
-     * 16进制字符串转字节数组
-     * @param hex
-     * @return
+     *  十六进制字符串转字节数组
+     * @param hex   十六进制字符串
+     * @return  返回字节数组
      */
     public static byte[] hexStringToByte(String hex) {
         byte[] b = new byte[hex.length() / 2];
@@ -101,6 +73,12 @@ public class FileUtils {
         }
         return b;
     }
+
+    /**
+     *
+     * @param c char c
+     * @return  返回int
+     */
     private static int parse(char c) {
         if (c >= 'a')
             return (c - 'a' + 10) & 0x0f;
@@ -113,11 +91,11 @@ public class FileUtils {
 
     /**
      * 字节数组写入文件
-     * @param hexCode
-     * @param targetPath
-     * @throws Exception
+     * @param hexCode 字节数组
+     * @param targetPath    目标路劲
+     * @throws IOException 写入文件异常
      */
-    public static void toFile(byte[] hexCode, String targetPath) throws Exception {
+    public static void toFile(byte[] hexCode, String targetPath) throws IOException {
         FileOutputStream out = new FileOutputStream(targetPath);
         out.write(hexCode);
         out.close();
@@ -127,8 +105,8 @@ public class FileUtils {
     /**
      * 文件数据写入（如果文件夹和文件不存在，则先创建，再写入）
      *
-     * @param filePath
-     * @param content
+     * @param filePath  文件路劲
+     * @param content   内容
      * @param flag     true:如果文件存在且存在内容，则内容换行追加；false:如果文件存在且存在内容，则内容替换
      */
     public static String fileLinesWrite(String filePath, String content, boolean flag) {
